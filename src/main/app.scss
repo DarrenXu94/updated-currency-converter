@@ -1,0 +1,63 @@
+html {
+    font-family: system-ui, sans-serif;
+    font-size: 1.25rem;
+}
+
+body {
+    margin: 0;
+    background-color: #5b768a;
+}
+
+.highlight {
+    fill:#c3ddef
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 70vh;
+    background-color: #252529;
+    stroke: #eee;
+    stroke-width: 1;
+    // fill: #5b768a;
+    -webkit-animation: mymove 4s infinite;
+    animation: mymove 4s infinite;
+}
+@-webkit-keyframes mymove {
+    0% {
+        stroke-width: 1;
+        fill: #7395ae;
+    }
+    50% {
+        stroke-width: 2;
+        fill: #65859c;
+    }
+    100% {
+        stroke-width: 1;
+        fill: #7395ae;
+    }
+}
+
+@keyframes mymove {
+    0% {
+        stroke-width: 1;
+        fill: #7395ae;
+    }
+    50% {
+        stroke-width: 2;
+        fill: #65859c;
+    }
+    100% {
+        stroke-width: 1;
+        fill: #7395ae;
+    }
+}
+
+svg path:hover {
+    stroke-width: 3;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
