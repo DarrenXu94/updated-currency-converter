@@ -1,5 +1,10 @@
 import React from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  ZoomableGroup,
+} from "react-simple-maps";
 import "./app.scss";
 import Calculator from "./calculator/Calculator";
 import { useCounter } from "./store/store";
@@ -10,31 +15,33 @@ export default function App() {
   const [state, { setDestinationCountry }] = useCounter();
 
   return (
-    <div>
+    <div id="mainMap">
       <ComposableMap>
-        <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                tabIndex={-1}
-                style={{
-                  default: { outline: "none" },
-                  hover: { outline: "none" },
-                  pressed: { outline: "none" },
-                }}
-                className={
-                  state.currency &&
-                  state.currency.CountryCodes.includes(geo.properties.ISO_A2)
-                    ? "highlight"
-                    : ""
-                }
-                onClick={() => setDestinationCountry(geo)}
-                key={geo.rsmKey}
-                geography={geo}
-              />
-            ))
-          }
-        </Geographies>
+        <ZoomableGroup zoom={1}>
+          <Geographies geography={geoUrl}>
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  tabIndex={-1}
+                  style={{
+                    default: { outline: "none" },
+                    hover: { outline: "none" },
+                    pressed: { outline: "none" },
+                  }}
+                  className={
+                    state.currency &&
+                    state.currency.CountryCodes.includes(geo.properties.ISO_A2)
+                      ? "highlight"
+                      : ""
+                  }
+                  onClick={() => setDestinationCountry(geo)}
+                  key={geo.rsmKey}
+                  geography={geo}
+                />
+              ))
+            }
+          </Geographies>
+        </ZoomableGroup>
       </ComposableMap>
       <Calculator />
     </div>

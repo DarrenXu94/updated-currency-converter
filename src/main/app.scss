@@ -11,7 +11,9 @@ body {
 .highlight {
     fill:#c3ddef
 }
-
+#mainMap > svg > g > rect {
+    stroke: none;
+}
 svg {
     display: inline-block;
     vertical-align: middle;
